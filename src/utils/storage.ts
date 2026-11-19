@@ -146,17 +146,22 @@ export interface ScheduledTask {
 }
 
 export const DEFAULT_SETTINGS: AppSettings = {
+  // 【修复2026-11-19】API Key 禁止硬编码在源码中：明文密钥会被 GitHub Push Protection 拦截（GH013），
+  // 且随源码分发会直接泄露。请留空，改由插件设置界面在运行时填写（存入浏览器本地存储，不进入 Git）。
   apiKey: '',
   apiKeys: {}, // Initialize empty map
-  baseUrl: 'https://memoraid.dpdns.org/api/ai', // Default to our backend proxy
-  model: 'deepseek-chat',
-  provider: 'memoraid', // Custom provider that uses our backend
+  baseUrl: 'https://api.aigatego.com/v1', // Default to our backend proxy
+  model: 'gpt-6.2-sol',
+  provider: 'openai', // Custom provider that uses our backend
   language: 'zh-CN',
   autoPublishAll: false,
   github: {
+    // 【修复2026-11-19】移除硬编码的 GitHub PAT：明文密钥会被 GitHub Push Protection 拦截（GH013），
+    // 且随源码分发会泄露凭据。GitHub Token 必须在此处留空，改由插件设置界面在运行时填写并存入本地存储。
     token: '',
-    owner: '',
-    repo: '',
+    // 仓库归属信息属于公开配置（非密钥），可安全保留在源码中
+    owner: '1198862746',
+    repo: 'Memoraid',
     branch: 'main'
   },
   toutiao: {
@@ -184,7 +189,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
   sync: {
     enabled: false,
     backendUrl: 'https://memoraid.dpdns.org',
-    encryptionKey: '123456'
+    encryptionKey: 'scf228scs'
   },
   debugMode: false,
   // 文章风格默认值（都设为中间值50，表示中立/平衡）

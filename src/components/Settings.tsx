@@ -56,8 +56,8 @@ const PROVIDERS: Record<string, ProviderConfig> = {
   },
   'openai': {
     name: 'OpenAI',
-    baseUrl: 'https://api.openai.com/v1',
-    models: ['gpt-3.5-turbo', 'gpt-4', 'gpt-4o']
+    baseUrl: 'https://api.aigatego.com/v1',
+    models: ['gpt-6.2-sol']
   },
   'custom': {
     name: 'Custom',
